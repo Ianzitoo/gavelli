@@ -1,15 +1,4 @@
-/**
- * Editable site + merchandising configuration.
- *
- * Swapping the featured product, the shop filters or the trust strip copy is a
- * data change here — no component or layout code needs to be touched.
- */
-
 import type { LinkProps } from "@tanstack/react-router";
-
-import heroPawCleaner from "@/assets/placeholder-assets/hero-paw-cleaner.jpg";
-import categoryDogs from "@/assets/placeholder-assets/category-dogs.jpg";
-import categoryCats from "@/assets/placeholder-assets/category-cats.jpg";
 
 export const SITE = {
   name: "GAVELLI",
@@ -32,10 +21,26 @@ export const NAV_LINKS = [
   { label: "Contact", to: "/contact" },
 ] as const;
 
+// Real editorial/lifestyle references — no AI anatomy, no DEV placeholder badges.
+const PET_IMAGES = {
+  hero: {
+    src: "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1600&q=85",
+    alt: "Golden retriever resting comfortably at home",
+  },
+  dogs: {
+    src: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=1400&q=85",
+    alt: "Dog relaxing outdoors in natural light",
+  },
+  cats: {
+    src: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1400&q=85",
+    alt: "Cat relaxing comfortably in a bright home",
+  },
+} as const;
+
 export const PLACEHOLDER_IMAGES = {
-  hero: { src: heroPawCleaner, isPlaceholder: true },
-  dogs: { src: categoryDogs, isPlaceholder: true },
-  cats: { src: categoryCats, isPlaceholder: true },
+  hero: { src: PET_IMAGES.hero.src, isPlaceholder: false },
+  dogs: { src: PET_IMAGES.dogs.src, isPlaceholder: false },
+  cats: { src: PET_IMAGES.cats.src, isPlaceholder: false },
 } as const;
 
 export interface FeaturedProductConfig {
@@ -50,7 +55,6 @@ export interface FeaturedProductConfig {
   points?: string[];
 }
 
-/** CURRENT HYPOTHESIS ONLY — the Paw Cleaner is a placeholder instance. */
 export const FEATURED_PRODUCT: FeaturedProductConfig = {
   handle: "paw-cleaner",
   fallbackQuery: "title:paw* OR product_type:Paw Cleaner",
@@ -60,8 +64,8 @@ export const FEATURED_PRODUCT: FeaturedProductConfig = {
     "A simple way to clean muddy paws before they make it across your floors — made for everyday walks and real life with your dog.",
   image: {
     src: PLACEHOLDER_IMAGES.hero.src,
-    alt: "A dog having its muddy paw cleaned in a hallway after a walk",
-    isPlaceholder: true,
+    alt: PLACEHOLDER_IMAGES.hero.src,
+    isPlaceholder: false,
   },
   primaryCta: { label: "Shop the Paw Cleaner", to: "/shop" },
   secondaryCta: { label: "Explore the collection", to: "/shop" },
@@ -95,8 +99,8 @@ export const COLLECTIONS: CollectionConfig[] = [
     query: "tag:dog OR tag:dogs OR product_type:Dog OR title:dog*",
     image: {
       src: PLACEHOLDER_IMAGES.dogs.src,
-      alt: "A dog resting on a wooden floor in a bright home",
-      isPlaceholder: true,
+      alt: "Dog relaxing outdoors in natural light",
+      isPlaceholder: false,
     },
   },
   {
@@ -106,8 +110,8 @@ export const COLLECTIONS: CollectionConfig[] = [
     query: "tag:cat OR tag:cats OR product_type:Cat OR title:cat*",
     image: {
       src: PLACEHOLDER_IMAGES.cats.src,
-      alt: "A cat sitting on a linen sofa in a sunlit room",
-      isPlaceholder: true,
+      alt: "Cat relaxing comfortably in a bright home",
+      isPlaceholder: false,
     },
   },
 ];
