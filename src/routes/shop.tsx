@@ -8,8 +8,8 @@ const description =
   "Browse every PAW & CO. product for dogs and cats. Prices shown in GBP with secure checkout.";
 
 export const Route = createFileRoute("/shop")({
-  validateSearch: (search: Record<string, unknown>): { q?: string } => ({
-    q: typeof search.q === "string" && search.q.length > 0 ? search.q : undefined,
+  validateSearch: (search: Record<string, unknown>): { q?: string | undefined } => ({
+    q: typeof search["q"] === "string" && search["q"].length > 0 ? search["q"] : undefined,
   }),
   head: () => ({
     meta: [

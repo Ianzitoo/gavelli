@@ -54,8 +54,8 @@ export interface FeaturedProductConfig {
   headline: string;
   subheadline: string;
   image: { src: string; alt: string; isPlaceholder: boolean };
-  primaryCta: { label: string; to: LinkProps["to"] };
-  secondaryCta: { label: string; to: LinkProps["to"] };
+  primaryCta: { label: string; to: NonNullable<LinkProps["to"]> };
+  secondaryCta: { label: string; to: NonNullable<LinkProps["to"]> };
   points?: string[];
 }
 

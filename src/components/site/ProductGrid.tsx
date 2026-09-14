@@ -9,9 +9,9 @@ export function ProductGrid({
   query,
   emptyMessage = "No products found",
 }: {
-  first?: number;
-  query?: string;
-  emptyMessage?: string;
+  first?: number | undefined;
+  query?: string | undefined;
+  emptyMessage?: string | undefined;
 }) {
   const { data, isLoading, isError } = useQuery(productsQueryOptions(first, query));
 

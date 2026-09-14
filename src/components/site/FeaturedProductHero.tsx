@@ -28,10 +28,10 @@ async function resolveFeaturedProduct(
   }
   if (config.fallbackQuery) {
     const matches = await fetchProducts(1, config.fallbackQuery);
-    if (matches.length > 0) return matches[0];
+    if (matches.length > 0) return matches[0]!;
   }
   const any = await fetchProducts(1);
-  return any[0] ?? null;
+  return any.length > 0 ? any[0]! : null;
 }
 
 export function FeaturedProductHero({ config }: { config: FeaturedProductConfig }) {
