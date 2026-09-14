@@ -1,15 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-import { FeaturedProductHero } from "@/components/site/FeaturedProductHero";
 import { ProductGrid } from "@/components/site/ProductGrid";
 import { DevPlaceholderBadge } from "@/components/site/DevPlaceholderBadge";
 import { Button } from "@/components/ui/button";
-import { COLLECTIONS, FEATURED_PRODUCT, SITE, TRUST_BLOCKS } from "@/config/site";
+import { COLLECTIONS, PLACEHOLDER_IMAGES, SITE } from "@/config/site";
 
-const title = "Gavelli — Better for pets. Easier for you.";
+const title = "Gavelli — Better everyday life, for you and your pet.";
 const description =
-  "Thoughtfully chosen essentials for dogs and cats. Prices in GBP, secure checkout, and UK delivery options shown at checkout.";
+  "Thoughtfully chosen pet essentials for everyday life. Explore practical products for dogs and cats from Gavelli.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -27,76 +26,62 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   return (
     <>
-      <FeaturedProductHero config={FEATURED_PRODUCT} />
-
-      <section aria-label="What we stand for" className="border-y border-border/70 bg-background">
-        <div className="container-page grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
-          {TRUST_BLOCKS.map((block) => (
-            <div key={block.title}>
-              <h2 className="text-base font-medium">{block.title}</h2>
-              <p className="mt-2 text-sm text-muted-foreground">{block.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="container-page py-16 lg:py-20" aria-labelledby="problem-solution">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <p className="eyebrow">Made for real life</p>
-            <h2 id="problem-solution" className="mt-3 text-3xl sm:text-4xl">
-              The little messes add up.
-            </h2>
-            <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
-              Muddy paws, wet floors and the towel by the door. The everyday moments are
-              small, but a simple solution can make them easier.
+      <section className="container-page pt-6 pb-14 sm:pt-8 sm:pb-20 lg:pb-24" aria-labelledby="home-hero">
+        <div className="grid overflow-hidden rounded-[2rem] bg-secondary lg:grid-cols-[1fr_1.08fr]">
+          <div className="flex flex-col justify-center px-7 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20">
+            <p className="eyebrow">Thoughtfully chosen for everyday life</p>
+            <h1 id="home-hero" className="mt-4 max-w-xl text-4xl leading-[1.02] sm:text-5xl lg:text-6xl">
+              Better everyday life, for you and your pet.
+            </h1>
+            <p className="mt-6 max-w-lg text-base leading-7 text-muted-foreground sm:text-lg">
+              Practical, considered essentials for the little moments that make life with a pet better.
             </p>
-            <ul className="mt-7 space-y-3 text-sm">
-              {[
-                "Easy to use after everyday walks",
-                "Quick to rinse and put away",
-                "A simple addition to your routine",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
-                    <Check className="h-3.5 w-3.5" />
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg">
+                <Link to="/shop">
+                  Shop all <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link to="/dogs">Explore for dogs</Link>
+              </Button>
+            </div>
           </div>
-
-          <div className="rounded-3xl bg-secondary/70 p-8 sm:p-10">
-            <p className="eyebrow">A simpler routine</p>
-            <h3 className="mt-3 text-2xl sm:text-3xl">From muddy paws to cleaner floors.</h3>
-            <ol className="mt-7 space-y-5 text-sm text-muted-foreground">
-              {["Add a little water", "Gently clean each paw", "Rinse, empty and store"].map(
-                (step, index) => (
-                  <li key={step} className="flex gap-4">
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
-                      {index + 1}
-                    </span>
-                    <span className="pt-1">{step}</span>
-                  </li>
-                ),
-              )}
-            </ol>
+          <div className="relative min-h-[360px] bg-muted sm:min-h-[460px] lg:min-h-[560px]">
+            <DevPlaceholderBadge className="absolute top-5 left-5 z-10" label="DEV PLACEHOLDER IMAGE" />
+            <img
+              src={PLACEHOLDER_IMAGES.hero.src}
+              alt="Lifestyle image placeholder for a pet at home"
+              width={1200}
+              height={1200}
+              fetchPriority="high"
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
       </section>
 
-      <section className="container-page pb-16 lg:pb-20" aria-labelledby="shop-by-pet">
+      <section className="container-page py-14 sm:py-18 lg:py-20" aria-labelledby="intro-heading">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="eyebrow">The Gavelli approach</p>
+          <h2 id="intro-heading" className="mt-4 text-3xl sm:text-4xl lg:text-5xl">
+            Thoughtfully chosen for everyday life.
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+            We look for simple, useful products that solve everyday pet-owner problems and feel natural in your home and routine.
+          </p>
+        </div>
+      </section>
+
+      <section className="container-page py-14 sm:py-18" aria-labelledby="shop-by-pet">
         <div className="flex items-end justify-between gap-6">
           <div>
             <p className="eyebrow">Shop by pet</p>
-            <h2 id="shop-by-pet" className="mt-3 text-3xl sm:text-4xl">
-              Dogs and cats, sorted.
-            </h2>
+            <h2 id="shop-by-pet" className="mt-3 text-3xl sm:text-4xl">Made for life with them.</h2>
           </div>
           <Button asChild variant="ghost" className="hidden sm:inline-flex">
             <Link to="/shop">
-              View everything <ArrowRight className="ml-2 h-4 w-4" />
+              View all <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>
@@ -106,37 +91,38 @@ function HomePage() {
             <Link
               key={collection.slug}
               to={collection.slug === "dogs" ? "/dogs" : "/cats"}
-              className="group relative overflow-hidden rounded-3xl bg-muted shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-lift)]"
+              className="group relative overflow-hidden rounded-[1.5rem] bg-muted shadow-[var(--shadow-soft)] transition-shadow duration-300 hover:shadow-[var(--shadow-lift)]"
             >
               {collection.image.isPlaceholder && (
-                <DevPlaceholderBadge className="absolute top-4 left-4" label="DEV PLACEHOLDER IMAGE" />
+                <DevPlaceholderBadge className="absolute top-4 left-4 z-10" label="DEV PLACEHOLDER IMAGE" />
               )}
               <img
                 src={collection.image.src}
                 alt={collection.image.alt}
                 width={1200}
-                height={1200}
+                height={900}
                 loading="lazy"
-                className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent p-6">
-                <h3 className="font-display text-2xl text-background">{collection.title}</h3>
-                <p className="mt-1 max-w-xs text-sm text-background/85">{collection.intro}</p>
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/75 via-ink/30 to-transparent p-7 pt-20">
+                <h3 className="font-display text-3xl text-background">{collection.title}</h3>
+                <p className="mt-2 max-w-sm text-sm leading-6 text-background/85">{collection.intro}</p>
+                <span className="mt-4 inline-flex items-center text-sm font-medium text-background">
+                  Shop {collection.title.replace("For ", "")} <ArrowRight className="ml-2 h-4 w-4" />
+                </span>
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      <section className="container-page pb-20" aria-labelledby="latest-products">
-        <div className="mb-8 flex items-end justify-between gap-6">
+      <section className="container-page py-14 sm:py-18 lg:py-20" aria-labelledby="featured-products">
+        <div className="flex items-end justify-between gap-6">
           <div>
-            <p className="eyebrow">Thoughtfully chosen</p>
-            <h2 id="latest-products" className="mt-3 text-3xl sm:text-4xl">
-              Everyday essentials, chosen with care.
-            </h2>
-            <p className="mt-3 max-w-xl text-sm text-muted-foreground">
-              Simple, practical products designed to fit naturally into life with your pet.
+            <p className="eyebrow">Everyday essentials</p>
+            <h2 id="featured-products" className="mt-3 text-3xl sm:text-4xl">Useful things, chosen with care.</h2>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">
+              A considered selection of practical products for the routines you share every day.
             </p>
           </div>
           <Button asChild variant="ghost" className="hidden sm:inline-flex">
@@ -145,22 +131,104 @@ function HomePage() {
             </Link>
           </Button>
         </div>
-        <ProductGrid first={6} />
+        <div className="mt-8">
+          <ProductGrid first={4} />
+        </div>
       </section>
 
-      <section className="bg-primary text-primary-foreground" aria-labelledby="brand-promise">
+      <section className="container-page py-14 sm:py-18 lg:py-20" aria-labelledby="real-life">
+        <div className="grid items-center overflow-hidden rounded-[2rem] bg-secondary lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative min-h-[360px] lg:min-h-[500px]">
+            <DevPlaceholderBadge className="absolute top-5 left-5 z-10" label="DEV PLACEHOLDER IMAGE" />
+            <img
+              src={PLACEHOLDER_IMAGES.dogs.src}
+              alt="Lifestyle image placeholder showing a dog at home"
+              width={1200}
+              height={1200}
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="px-7 py-12 sm:px-12 sm:py-16 lg:px-16">
+            <p className="eyebrow">Made for real life</p>
+            <h2 id="real-life" className="mt-4 max-w-lg text-3xl sm:text-4xl">
+              The best essentials are the ones that simply fit in.
+            </h2>
+            <p className="mt-5 max-w-lg text-base leading-7 text-muted-foreground">
+              From muddy walks to quiet evenings at home, Gavelli focuses on practical details that make everyday routines feel a little easier.
+            </p>
+            <Button asChild variant="outline" className="mt-7">
+              <Link to="/about">
+                Why Gavelli <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-border/70 bg-background" aria-labelledby="principles">
+        <div className="container-page py-14 sm:py-18 lg:py-20">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="eyebrow">Why Gavelli</p>
+            <h2 id="principles" className="mt-4 text-3xl sm:text-4xl">Simple principles. Better choices.</h2>
+          </div>
+          <div className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-10">
+            {[
+              ["Practical", "Products should earn their place in your routine."],
+              ["Simple", "Useful details without unnecessary fuss."],
+              ["Everyday", "Made to feel natural in real homes and real life."],
+            ].map(([heading, body]) => (
+              <div key={heading} className="text-center sm:text-left">
+                <h3 className="text-lg font-medium">{heading}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="container-page py-14 sm:py-18 lg:py-20" aria-labelledby="paw-cleaner-feature">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="relative overflow-hidden rounded-[1.75rem] bg-muted">
+            <DevPlaceholderBadge className="absolute top-5 left-5 z-10" label="DEV PLACEHOLDER IMAGE" />
+            <img
+              src={PLACEHOLDER_IMAGES.hero.src}
+              alt="Lifestyle image placeholder for the featured paw cleaner"
+              width={1200}
+              height={1200}
+              loading="lazy"
+              className="aspect-square w-full object-cover"
+            />
+          </div>
+          <div>
+            <p className="eyebrow">For cleaner walks</p>
+            <h2 id="paw-cleaner-feature" className="mt-4 text-3xl sm:text-4xl lg:text-5xl">
+              Less mud. Less mess. Happier homes.
+            </h2>
+            <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
+              A simple solution for muddy paws before they make it across your floors. Explore the Paw Cleaner and see how it fits into your everyday walk routine.
+            </p>
+            <Button asChild size="lg" className="mt-8">
+              <Link to="/shop">
+                Shop the Paw Cleaner <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-primary text-primary-foreground" aria-labelledby="home-close">
         <div className="container-page py-16 text-center sm:py-20">
-          <p className="text-xs uppercase tracking-[0.16em] opacity-75">The Gavelli promise</p>
-          <h2 id="brand-promise" className="mx-auto mt-4 max-w-2xl text-3xl sm:text-4xl lg:text-5xl">
+          <p className="text-xs uppercase tracking-[0.16em] opacity-75">Gavelli</p>
+          <h2 id="home-close" className="mx-auto mt-4 max-w-2xl text-3xl sm:text-4xl lg:text-5xl">
             Better for pets. Easier for you.
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-sm leading-6 text-primary-foreground/80 sm:text-base">
-            We believe everyday pet products should be useful, simple and genuinely pleasant
-            to live with.
+            Thoughtful essentials for the everyday moments you share.
           </p>
           <Button asChild size="lg" variant="secondary" className="mt-8">
             <Link to="/shop">
-              Explore Gavelli <ArrowRight className="ml-2 h-4 w-4" />
+              Explore the collection <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>
