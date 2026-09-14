@@ -2,9 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
 import { ProductGrid } from "@/components/site/ProductGrid";
-import { DevPlaceholderBadge } from "@/components/site/DevPlaceholderBadge";
 import { Button } from "@/components/ui/button";
-import { COLLECTIONS, PLACEHOLDER_IMAGES, SITE } from "@/config/site";
+import { SITE } from "@/config/site";
 
 const title = "Gavelli — Thoughtful essentials for life with your pet.";
 const description =
@@ -27,39 +26,28 @@ function HomePage() {
   return (
     <main>
       <section className="container-page pb-16 pt-6 sm:pb-20 sm:pt-8 lg:pb-24">
-        <div className="grid min-h-[620px] overflow-hidden rounded-[1.75rem] bg-secondary lg:grid-cols-2">
-          <div className="flex items-center px-7 py-12 sm:px-12 lg:px-16 lg:py-16">
-            <div className="max-w-xl">
-              <p className="eyebrow">Thoughtfully chosen for everyday life</p>
-              <h1 className="mt-5 text-4xl leading-[1.04] sm:text-5xl lg:text-[4.25rem]">
-                Better everyday life, for you and your pet.
-              </h1>
-              <p className="mt-6 max-w-lg text-base leading-7 text-muted-foreground sm:text-lg">
-                Practical, considered essentials for the everyday moments you share.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild size="lg">
-                  <Link to="/shop">
-                    Shop all <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline">
-                  <Link to="/dogs">Shop for dogs</Link>
-                </Button>
-              </div>
+        <div className="relative overflow-hidden rounded-[1.75rem] bg-secondary px-7 py-14 sm:px-12 sm:py-20 lg:px-16 lg:py-24">
+          <div className="relative z-10 max-w-2xl">
+            <p className="eyebrow">Thoughtfully chosen for everyday life</p>
+            <h1 className="mt-5 text-4xl leading-[1.04] sm:text-5xl lg:text-[4.75rem]">
+              Better everyday life, for you and your pet.
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
+              Practical, considered essentials for the everyday moments you share.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg">
+                <Link to="/shop">
+                  Shop all <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link to="/dogs">Shop for dogs</Link>
+              </Button>
             </div>
           </div>
-          <div className="relative min-h-[420px] bg-muted lg:min-h-0">
-            <DevPlaceholderBadge className="absolute left-5 top-5 z-10" label="DEV PLACEHOLDER IMAGE" />
-            <img
-              src={PLACEHOLDER_IMAGES.hero.src}
-              alt="Lifestyle image placeholder for Gavelli"
-              width={1200}
-              height={1400}
-              fetchPriority="high"
-              className="h-full w-full object-cover"
-            />
-          </div>
+          <div className="pointer-events-none absolute -right-28 -top-28 h-80 w-80 rounded-full border-[3rem] border-primary/10 sm:h-[28rem] sm:w-[28rem]" />
+          <div className="pointer-events-none absolute -bottom-24 right-20 h-48 w-48 rounded-full bg-primary/5" />
         </div>
       </section>
 
@@ -86,33 +74,33 @@ function HomePage() {
           </Button>
         </div>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          {COLLECTIONS.map((collection) => (
-            <Link
-              key={collection.slug}
-              to={collection.slug === "dogs" ? "/dogs" : "/cats"}
-              className="group relative overflow-hidden rounded-[1.5rem] bg-muted"
-            >
-              {collection.image.isPlaceholder && (
-                <DevPlaceholderBadge className="absolute left-4 top-4 z-10" label="DEV PLACEHOLDER IMAGE" />
-              )}
-              <img
-                src={collection.image.src}
-                alt={collection.image.alt}
-                width={1200}
-                height={900}
-                loading="lazy"
-                className="aspect-[1.15/1] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-7 pt-24">
-                <h3 className="text-3xl text-background">{collection.title}</h3>
-                <p className="mt-2 max-w-sm text-sm leading-6 text-background/85">{collection.intro}</p>
-                <span className="mt-4 inline-flex items-center text-sm font-medium text-background">
-                  Explore <ArrowRight className="ml-2 h-4 w-4" />
-                </span>
-              </div>
-            </Link>
-          ))}
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <Link
+            to="/dogs"
+            className="group rounded-[1.5rem] border border-border bg-secondary p-7 transition-colors hover:bg-muted sm:p-10"
+          >
+            <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Collection 01</p>
+            <h3 className="mt-12 text-3xl sm:text-4xl">For dogs</h3>
+            <p className="mt-3 max-w-sm text-sm leading-6 text-muted-foreground">
+              Practical essentials for walks, home and everything in between.
+            </p>
+            <span className="mt-8 inline-flex items-center text-sm font-medium">
+              Explore dogs <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
+          <Link
+            to="/cats"
+            className="group rounded-[1.5rem] border border-border bg-background p-7 transition-colors hover:bg-muted sm:p-10"
+          >
+            <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Collection 02</p>
+            <h3 className="mt-12 text-3xl sm:text-4xl">For cats</h3>
+            <p className="mt-3 max-w-sm text-sm leading-6 text-muted-foreground">
+              Considered essentials designed to fit naturally into everyday life.
+            </p>
+            <span className="mt-8 inline-flex items-center text-sm font-medium">
+              Explore cats <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
         </div>
       </section>
 
@@ -137,17 +125,12 @@ function HomePage() {
       </section>
 
       <section className="container-page py-16 sm:py-20 lg:py-24" aria-labelledby="real-life">
-        <div className="grid overflow-hidden rounded-[1.75rem] bg-secondary lg:grid-cols-2">
-          <div className="relative min-h-[380px] lg:min-h-[520px]">
-            <DevPlaceholderBadge className="absolute left-5 top-5 z-10" label="DEV PLACEHOLDER IMAGE" />
-            <img
-              src={PLACEHOLDER_IMAGES.dogs.src}
-              alt="Lifestyle image placeholder showing a dog at home"
-              width={1200}
-              height={1200}
-              loading="lazy"
-              className="h-full w-full object-cover"
-            />
+        <div className="grid overflow-hidden rounded-[1.75rem] border border-border bg-secondary lg:grid-cols-[0.8fr_1.2fr]">
+          <div className="flex min-h-[300px] items-center justify-center border-b border-border/70 p-10 lg:min-h-[460px] lg:border-b-0 lg:border-r">
+            <div className="text-center">
+              <p className="text-7xl leading-none text-primary/15 sm:text-8xl">01</p>
+              <p className="mt-4 text-xs uppercase tracking-[0.18em] text-muted-foreground">Everyday, considered</p>
+            </div>
           </div>
           <div className="flex items-center px-7 py-12 sm:px-12 lg:px-16">
             <div className="max-w-lg">
@@ -189,27 +172,16 @@ function HomePage() {
       </section>
 
       <section className="container-page pb-16 sm:pb-20 lg:pb-24" aria-labelledby="paw-cleaner-feature">
-        <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-          <div className="relative overflow-hidden rounded-[1.5rem] bg-muted">
-            <DevPlaceholderBadge className="absolute left-5 top-5 z-10" label="DEV PLACEHOLDER IMAGE" />
-            <img
-              src={PLACEHOLDER_IMAGES.hero.src}
-              alt="Lifestyle image placeholder for the featured paw cleaner"
-              width={1200}
-              height={1200}
-              loading="lazy"
-              className="aspect-square w-full object-cover"
-            />
-          </div>
-          <div>
-            <p className="eyebrow">A Gavelli favourite</p>
+        <div className="rounded-[1.75rem] bg-primary px-7 py-12 text-primary-foreground sm:px-12 sm:py-16 lg:px-16">
+          <div className="max-w-3xl">
+            <p className="text-xs uppercase tracking-[0.16em] opacity-70">A Gavelli favourite</p>
             <h2 id="paw-cleaner-feature" className="mt-4 text-3xl sm:text-4xl lg:text-5xl">
               Less mud. Less mess. Happier homes.
             </h2>
-            <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
+            <p className="mt-5 max-w-xl text-base leading-7 opacity-80">
               Discover the Paw Cleaner — a simple solution for muddy paws before they make it across your floors.
             </p>
-            <Button asChild size="lg" className="mt-8">
+            <Button asChild size="lg" variant="secondary" className="mt-8">
               <Link to="/shop">Discover the Paw Cleaner <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
           </div>
