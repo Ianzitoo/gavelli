@@ -7,9 +7,9 @@ import { DevPlaceholderBadge } from "@/components/site/DevPlaceholderBadge";
 import { Button } from "@/components/ui/button";
 import { COLLECTIONS, FEATURED_PRODUCT, SITE, TRUST_BLOCKS } from "@/config/site";
 
-const title = "PAW & CO. — Practical products for dogs and cats";
+const title = "Gavelli — Better for pets. Easier for you.";
 const description =
-  "Carefully selected, practical products for dogs and cats. Prices in GBP, secure checkout and UK delivery options shown at checkout.";
+  "Thoughtfully chosen essentials for dogs and cats. Prices in GBP, secure checkout, and UK delivery options shown at checkout.";
 
 export const Route = createFileRoute("/")({
   head: () => ({

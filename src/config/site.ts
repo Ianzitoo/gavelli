@@ -12,13 +12,13 @@ import categoryDogs from "@/assets/placeholder-assets/category-dogs.jpg";
 import categoryCats from "@/assets/placeholder-assets/category-cats.jpg";
 
 export const SITE = {
-  name: "PAW & CO.",
-  tagline: "Carefully selected products for dogs and cats.",
+  name: "GAVELLI",
+  tagline: "Better for pets. Easier for you.",
   /** Update to the live domain once the store is published. */
-  url: "https://pawandco.example",
+  url: "https://gavelli.example",
   locale: "en-GB",
   currency: "GBP",
-  contactEmail: "hello@pawandco.example",
+  contactEmail: "hello@gavelli.example",
 } as const;
 
 /** Shopify-hosted customer account area (never used for checkout). */
@@ -67,15 +67,15 @@ export const FEATURED_PRODUCT: FeaturedProductConfig = {
   handle: "paw-cleaner",
   fallbackQuery: "title:paw* OR product_type:Paw Cleaner",
   eyebrow: "Featured",
-  headline: "Goodbye, muddy paw prints.",
+  headline: "Better for pets. Easier for you.",
   subheadline:
-    "An easier way to clean up after walks — without turning the whole house into a mud zone.",
+    "Thoughtfully chosen essentials that make everyday life with your pet a little easier.",
   image: {
     src: PLACEHOLDER_IMAGES.hero.src,
     alt: "A dog having its muddy paw cleaned in a hallway after a walk",
     isPlaceholder: true,
   },
-  primaryCta: { label: "Shop Paw Cleaners", to: "/shop" },
+  primaryCta: { label: "Shop Our Essentials", to: "/shop" },
   secondaryCta: { label: "Explore All Products", to: "/shop" },
   points: [
     "Made for everyday walks",
@@ -85,10 +85,10 @@ export const FEATURED_PRODUCT: FeaturedProductConfig = {
 };
 
 export const TRUST_BLOCKS = [
-  { title: "Thoughtfully Selected", body: "Practical products for everyday life." },
+  { title: "Thoughtfully Selected", body: "Practical products for everyday pet life." },
   { title: "UK Delivery", body: "Delivery options shown at checkout." },
   { title: "Secure Checkout", body: "Safe and secure payment." },
-  { title: "Here to Help", body: "Questions answered by email." },
+  { title: "Made for Everyday Life", body: "Simple products for real life with pets." },
 ] as const;
 
 export interface CollectionConfig {
