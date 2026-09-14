@@ -14,14 +14,12 @@ import categoryCats from "@/assets/placeholder-assets/category-cats.jpg";
 export const SITE = {
   name: "GAVELLI",
   tagline: "Better for pets. Easier for you.",
-  /** Update to the live domain once the store is published. */
   url: "https://gavelli.example",
   locale: "en-GB",
   currency: "GBP",
   contactEmail: "hello@gavelli.example",
 } as const;
 
-/** Shopify-hosted customer account area (never used for checkout). */
 export const SHOP_ACCOUNT_URL = "https://eshbjn-c3.myshopify.com/account";
 
 export const NAV_LINKS = [
@@ -34,11 +32,6 @@ export const NAV_LINKS = [
   { label: "Contact", to: "/contact" },
 ] as const;
 
-/**
- * Images used before real product/lifestyle photography is connected.
- * Everything in `placeholder-assets` is a development placeholder and is
- * flagged in the UI so it can never be mistaken for final launch imagery.
- */
 export const PLACEHOLDER_IMAGES = {
   hero: { src: heroPawCleaner, isPlaceholder: true },
   dogs: { src: categoryDogs, isPlaceholder: true },
@@ -46,9 +39,7 @@ export const PLACEHOLDER_IMAGES = {
 } as const;
 
 export interface FeaturedProductConfig {
-  /** Shopify product handle. Leave empty to fall back to the first product. */
   handle: string;
-  /** Optional Storefront search query used when the handle is unavailable. */
   fallbackQuery?: string;
   eyebrow?: string;
   headline: string;
@@ -59,43 +50,39 @@ export interface FeaturedProductConfig {
   points?: string[];
 }
 
-/**
- * CURRENT HYPOTHESIS ONLY — the Paw Cleaner is a placeholder instance.
- * Change `handle` (and the copy below) to feature a different Shopify product.
- */
+/** CURRENT HYPOTHESIS ONLY — the Paw Cleaner is a placeholder instance. */
 export const FEATURED_PRODUCT: FeaturedProductConfig = {
   handle: "paw-cleaner",
   fallbackQuery: "title:paw* OR product_type:Paw Cleaner",
-  eyebrow: "Featured",
-  headline: "Better for pets. Easier for you.",
+  eyebrow: "For cleaner walks",
+  headline: "Less mud. Less mess. Happier homes.",
   subheadline:
-    "Thoughtfully chosen essentials that make everyday life with your pet a little easier.",
+    "A simple way to clean muddy paws before they make it across your floors — made for everyday walks and real life with your dog.",
   image: {
     src: PLACEHOLDER_IMAGES.hero.src,
     alt: "A dog having its muddy paw cleaned in a hallway after a walk",
     isPlaceholder: true,
   },
-  primaryCta: { label: "Shop Our Essentials", to: "/shop" },
-  secondaryCta: { label: "Explore All Products", to: "/shop" },
+  primaryCta: { label: "Shop the Paw Cleaner", to: "/shop" },
+  secondaryCta: { label: "Explore the collection", to: "/shop" },
   points: [
+    "Easy to use",
+    "Rinse and reuse",
     "Made for everyday walks",
-    "Quick to rinse and store",
-    "Delivery options shown at checkout",
   ],
 };
 
 export const TRUST_BLOCKS = [
-  { title: "Thoughtfully Selected", body: "Practical products for everyday pet life." },
-  { title: "UK Delivery", body: "Delivery options shown at checkout." },
-  { title: "Secure Checkout", body: "Safe and secure payment." },
-  { title: "Made for Everyday Life", body: "Simple products for real life with pets." },
+  { title: "Thoughtfully chosen", body: "Practical products for everyday pet life." },
+  { title: "UK delivery", body: "Available delivery options shown at checkout." },
+  { title: "Secure checkout", body: "Your payment is securely handled at checkout." },
+  { title: "Made for real life", body: "Simple products that fit naturally into your routine." },
 ] as const;
 
 export interface CollectionConfig {
   slug: "dogs" | "cats";
   title: string;
   intro: string;
-  /** Storefront API search syntax used to filter the catalogue. */
   query: string;
   image: { src: string; alt: string; isPlaceholder: boolean };
 }
