@@ -21,7 +21,6 @@ export const NAV_LINKS = [
   { label: "Contact", to: "/contact" },
 ] as const;
 
-// Real editorial/lifestyle references — no AI anatomy, no DEV placeholder badges.
 const PET_IMAGES = {
   hero: {
     src: "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1600&q=85",
@@ -64,7 +63,7 @@ export const FEATURED_PRODUCT: FeaturedProductConfig = {
     "A simple way to clean muddy paws before they make it across your floors — made for everyday walks and real life with your dog.",
   image: {
     src: PLACEHOLDER_IMAGES.hero.src,
-    alt: PLACEHOLDER_IMAGES.hero.src,
+    alt: PET_IMAGES.hero.alt,
     isPlaceholder: false,
   },
   primaryCta: { label: "Shop the Paw Cleaner", to: "/shop" },
@@ -99,7 +98,7 @@ export const COLLECTIONS: CollectionConfig[] = [
     query: "tag:dog OR tag:dogs OR product_type:Dog OR title:dog*",
     image: {
       src: PLACEHOLDER_IMAGES.dogs.src,
-      alt: "Dog relaxing outdoors in natural light",
+      alt: PET_IMAGES.dogs.alt,
       isPlaceholder: false,
     },
   },
@@ -110,7 +109,7 @@ export const COLLECTIONS: CollectionConfig[] = [
     query: "tag:cat OR tag:cats OR product_type:Cat OR title:cat*",
     image: {
       src: PLACEHOLDER_IMAGES.cats.src,
-      alt: "Cat relaxing comfortably in a bright home",
+      alt: PET_IMAGES.cats.alt,
       isPlaceholder: false,
     },
   },
