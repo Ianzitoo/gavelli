@@ -5,6 +5,8 @@
  * data change here — no component or layout code needs to be touched.
  */
 
+import type { LinkProps } from "@tanstack/react-router";
+
 import heroPawCleaner from "@/assets/placeholder-assets/hero-paw-cleaner.jpg";
 import categoryDogs from "@/assets/placeholder-assets/category-dogs.jpg";
 import categoryCats from "@/assets/placeholder-assets/category-cats.jpg";
@@ -18,6 +20,9 @@ export const SITE = {
   currency: "GBP",
   contactEmail: "hello@pawandco.example",
 } as const;
+
+/** Shopify-hosted customer account area (never used for checkout). */
+export const SHOP_ACCOUNT_URL = "https://eshbjn-c3.myshopify.com/account";
 
 export const NAV_LINKS = [
   { label: "Home", to: "/" },
@@ -49,8 +54,8 @@ export interface FeaturedProductConfig {
   headline: string;
   subheadline: string;
   image: { src: string; alt: string; isPlaceholder: boolean };
-  primaryCta: { label: string; to: string; search?: Record<string, string> };
-  secondaryCta: { label: string; to: string };
+  primaryCta: { label: string; to: LinkProps["to"] };
+  secondaryCta: { label: string; to: LinkProps["to"] };
   points?: string[];
 }
 
