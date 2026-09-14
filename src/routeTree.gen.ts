@@ -11,8 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CatsRouteImport } from './routes/cats'
+import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as DogsRouteImport } from './routes/dogs'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
 
 const IndexRoute = IndexRouteImport.update({
@@ -25,14 +28,29 @@ const CatsRoute = CatsRouteImport.update({
   path: '/cats',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CookiePolicyRoute = CookiePolicyRouteImport.update({
+  id: '/cookie-policy',
+  path: '/cookie-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DogsRoute = DogsRouteImport.update({
   id: '/dogs',
   path: '/dogs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
+  id: '/terms-and-conditions',
+  path: '/terms-and-conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductHandleRoute = ProductHandleRouteImport.update({
@@ -44,38 +62,75 @@ const ProductHandleRoute = ProductHandleRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cats': typeof CatsRoute
+  '/cookie-policy': typeof CookiePolicyRoute
   '/dogs': typeof DogsRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/shop': typeof ShopRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/product/$handle': typeof ProductHandleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cats': typeof CatsRoute
+  '/cookie-policy': typeof CookiePolicyRoute
   '/dogs': typeof DogsRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/shop': typeof ShopRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/product/$handle': typeof ProductHandleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cats': typeof CatsRoute
+  '/cookie-policy': typeof CookiePolicyRoute
   '/dogs': typeof DogsRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/shop': typeof ShopRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/product/$handle': typeof ProductHandleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cats' | '/dogs' | '/shop' | '/product/$handle'
+  fullPaths:
+    | '/'
+    | '/cats'
+    | '/cookie-policy'
+    | '/dogs'
+    | '/privacy-policy'
+    | '/shop'
+    | '/terms-and-conditions'
+    | '/product/$handle'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cats' | '/dogs' | '/shop' | '/product/$handle'
-  id: '__root__' | '/' | '/cats' | '/dogs' | '/shop' | '/product/$handle'
+  to:
+    | '/'
+    | '/cats'
+    | '/cookie-policy'
+    | '/dogs'
+    | '/privacy-policy'
+    | '/shop'
+    | '/terms-and-conditions'
+    | '/product/$handle'
+  id:
+    | '__root__'
+    | '/'
+    | '/cats'
+    | '/cookie-policy'
+    | '/dogs'
+    | '/privacy-policy'
+    | '/shop'
+    | '/terms-and-conditions'
+    | '/product/$handle'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CatsRoute: typeof CatsRoute
+  CookiePolicyRoute: typeof CookiePolicyRoute
   DogsRoute: typeof DogsRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ShopRoute: typeof ShopRoute
+  TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   ProductHandleRoute: typeof ProductHandleRoute
 }
 
@@ -95,6 +150,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CatsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cookie-policy': {
+      id: '/cookie-policy'
+      path: '/cookie-policy'
+      fullPath: '/cookie-policy'
+      preLoaderRoute: typeof CookiePolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dogs': {
       id: '/dogs'
       path: '/dogs'
@@ -102,11 +164,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DogsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop': {
       id: '/shop'
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-and-conditions': {
+      id: '/terms-and-conditions'
+      path: '/terms-and-conditions'
+      fullPath: '/terms-and-conditions'
+      preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/product/$handle': {
@@ -122,8 +198,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CatsRoute: CatsRoute,
+  CookiePolicyRoute: CookiePolicyRoute,
   DogsRoute: DogsRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   ShopRoute: ShopRoute,
+  TermsAndConditionsRoute: TermsAndConditionsRoute,
   ProductHandleRoute: ProductHandleRoute,
 }
 export const routeTree = rootRouteImport
